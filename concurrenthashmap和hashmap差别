@@ -1,1 +1,2 @@
 concurrenthashmap和hashmap差别
+concurrenthashmap在hashmap的基础上主要使用锁分区技术
