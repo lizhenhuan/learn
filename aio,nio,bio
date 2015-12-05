@@ -16,7 +16,7 @@ InetSocketAddress socketAddress = new InetSocketAddress("localhost", 29000);
 channel = SocketChannel.open(socketAddress);  
 channel.configureBlocking(false); 
 
-aio server
+aio server  http://www.iteye.com/topic/472333
 ExecutorService executorService = Executors.newCachedThreadPool();  
 AsynchronousChannelGroup threadGroup = AsynchronousChannelGroup.withCachedThreadPool(executorService, 1);  
 try (AsynchronousServerSocketChannel server = AsynchronousServerSocketChannel.open(threadGroup)) {  
@@ -24,3 +24,4 @@ server.bind(new InetSocketAddress(port));
 server.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() {  
     public void completed(AsynchronousSocketChannel result, Object attachment) { }
 }
+
