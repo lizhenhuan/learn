@@ -1,0 +1,26 @@
+http://blog.csdn.net/liuj2511981/article/details/8658440
+
+bio 同步阻塞 ServerSocket
+nio 同步非阻塞(可以开始做事情的时候通知我我来开始读数据) ServerSocketChannel
+aio 一部非阻塞(你把数据读好之后自己交到我手上来) AsynchronousSocketChannel
+
+nio server
+channel = ServerSocketChannel.open();  
+//绑定监听端口  
+channel.socket().bind(new InetSocketAddress(29000));  
+//设置为非阻塞形式  
+channel.configureBlocking(false);
+
+nio client
+InetSocketAddress socketAddress = new InetSocketAddress("localhost", 29000);   
+channel = SocketChannel.open(socketAddress);  
+channel.configureBlocking(false); 
+
+aio server
+ExecutorService executorService = Executors.newCachedThreadPool();  
+AsynchronousChannelGroup threadGroup = AsynchronousChannelGroup.withCachedThreadPool(executorService, 1);  
+try (AsynchronousServerSocketChannel server = AsynchronousServerSocketChannel.open(threadGroup)) {  
+server.bind(new InetSocketAddress(port));  
+server.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() {  
+    public void completed(AsynchronousSocketChannel result, Object attachment) { }
+}
