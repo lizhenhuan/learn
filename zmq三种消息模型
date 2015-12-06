@@ -1,0 +1,11 @@
+http://news.cnblogs.com/n/154000/
+
+ZMQ 提供了三个基本的通信模型，分别是“Request-Reply “，”Publisher-Subscriber“，”Parallel Pipeline”,
+
+Request-Reply
+请求端发送一个简单的 hello，服务端则回应一个 world。请求端和服务端都可以是 1:N 的模型。通常把 1 认为是 Server ，N 认为是 Client 。
+
+Publisher-Subscriber
+我们可以想象一下天气预报的订阅模式，由一个节点提供信息源，由其他的节点，接受信息源的信息
+
+Parallel Pipeline
